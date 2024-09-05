@@ -26,18 +26,38 @@ def control(game_list):
 
 
 def player1_choose(game_list):
-    player1 = int(input("Player1 please write a number between 1-9: ")) - 1
-    if game_list[player1] == " ":
-        game_list[player1] = "X"
-    else:
-        print("You have to choose the empty square")
+    player1 = input("Player1 please write a number between 1-9: ")
+    try:
+        player1 = int(player1) - 1
+        if game_list[player1] == " ":
+            game_list[player1] = "X"
+        else:
+            print("You have to choose the empty square")
+            player1_choose(game_list)
+    except ValueError:
+        print("Please write a number between 1-9!!")
+        game_board(game_list)
+        player1_choose(game_list)
+    except IndexError:
+        print("Please write a number between 1-9!!")
+        game_board(game_list)
         player1_choose(game_list)
 
 
 def player2_choose(game_list):
-    player2 = int(input("Player2 please write a number between 1-9: ")) - 1
-    if game_list[player2] == " ":
-        game_list[player2] = "Y"
-    else:
-        print("You have to choose the empty square")
+    player2 = input("Player2 please write a number between 1-9: ")
+    try:
+        player2 = int(player2) - 1
+        if game_list[player2] == " ":
+            game_list[player2] = "Y"
+        else:
+            print("You have to choose the empty square")
+            player2_choose(game_list)
+    except ValueError:
+        print("Please write a number between 1-9!!")
+        game_board(game_list)
+        player2_choose(game_list)
+    except IndexError:
+        print("Please write a number between 1-9!!")
+        game_board(game_list)
         player2_choose(game_list)
